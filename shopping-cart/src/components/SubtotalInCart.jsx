@@ -1,14 +1,16 @@
+/* eslint-disable react/prop-types */
 export default function SubTotalInCart({ products }) {
   const numberOfItems = products.length;
+  console.log(numberOfItems);
   let totalPrice = 0;
-  products.forEach(
-    (product) =>
-      product.quantityOnCart > 0 &&
-      (totalPrice += product.quantityOnCart * product.unitPrice)
+  products.map(
+    (product) => (totalPrice += product.quantityOnCart * product.unitPrice)
   );
   return (
-    <div>
-      <span>{`Subtotal (${numberOfItems} items): BDT # ${totalPrice} Taka`}</span>
+    <div className="p-5 border-2 rounded-md">
+      <span>
+        <strong>{`Subtotal (${numberOfItems} items): BDT # ${totalPrice} Taka`}</strong>
+      </span>
     </div>
   );
 }
