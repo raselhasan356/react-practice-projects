@@ -1,4 +1,4 @@
-import ProductsInCart from "./ProductsInCart";
+import ProductsList from "./ProductsList";
 
 export default function ShoppingCart() {
   return (
@@ -6,7 +6,7 @@ export default function ShoppingCart() {
       <h1 className="text-3xl font-bold text-gray-900 text-center p-2 mb-5">
         Shopping Cart
       </h1>
-      <ProductsInCart />
+      <ProductsList />
     </div>
   );
 }

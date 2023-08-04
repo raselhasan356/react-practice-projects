@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-export default function SubTotalInCart({ products }) {
+export default function SubTotal({ products }) {
   const numberOfItems = products.length;
   console.log(numberOfItems);
   let totalPrice = 0;

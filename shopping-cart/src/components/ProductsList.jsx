@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import SubTotalInCart from "./SubtotalInCart";
-import ProductInCart from "./ProductInCart";
+import SubTotal from "./Subtotal";
+import Product from "./Product";
 import { initialProducts } from "../utils/data";
 
-export default function ProductsInCart() {
+export default function ProductsList() {
   const [cartProducts, setCartProducts] = useState(
     initialProducts.filter((product) => product.quantityOnCart > 0)
   );
@@ -39,7 +39,7 @@ export default function ProductsInCart() {
     <div className="flex space-x-5">
       <div className="border-2 rounded-md p-5 space-y-5">
         {cartProducts.map((product) => (
-          <ProductInCart
+          <Product
             key={product.id}
             product={product}
             onChangeProductQuantity={handleOnChangeProductQuantity}
@@ -48,7 +48,7 @@ export default function ProductsInCart() {
         ))}
       </div>
       <div>
-        <SubTotalInCart products={cartProducts} />
+        <SubTotal products={cartProducts} />
       </div>
     </div>
   );

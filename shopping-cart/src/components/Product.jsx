@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-export default function ProductInCart({
+export default function Product({
   product,
   onChangeProductQuantity,
   onProductDelete,
