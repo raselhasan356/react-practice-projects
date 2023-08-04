@@ -2,10 +2,11 @@
 import { useState } from "react";
 import SubTotalInCart from "./SubtotalInCart";
 import ProductInCart from "./ProductInCart";
+import { initialProducts } from "../utils/data";
 
-export default function ProductsInCart({ products }) {
+export default function ProductsInCart() {
   const [cartProducts, setCartProducts] = useState(
-    products.filter((product) => product.quantityOnCart > 0)
+    initialProducts.filter((product) => product.quantityOnCart > 0)
   );
 
   console.log(cartProducts);
@@ -14,19 +15,24 @@ export default function ProductsInCart({ products }) {
     setCartProducts(cartProducts.filter((product) => product.id !== productId));
   }
 
-  function handleOnChangeProductQuantity(newQuantityOnCart, productId) {
-    console.log("Changed to=>", newQuantityOnCart);
-    setCartProducts(
-      cartProducts.map((product) => {
-        if (product.id === productId) {
-          return {
-            ...product,
-            quantityOnCart: newQuantityOnCart,
-          };
-        }
-        return product;
-      })
-    );
+  function handleOnChangeProductQuantity(changeType, productId) {
+    const items = changeProductQuantity(changeType, productId);
+    setCartProducts(items);
+  }
+
+  function changeProductQuantity(changeType, productId) {
+    return cartProducts.map((product) => {
+      if (product.id === productId) {
+        return {
+          ...product,
+          quantityOnCart:
+            changeType === "+"
+              ? product.quantityOnCart + 1
+              : Math.max(1, product.quantityOnCart - 1),
+        };
+      }
+      return product;
+    });
   }
 
   return (

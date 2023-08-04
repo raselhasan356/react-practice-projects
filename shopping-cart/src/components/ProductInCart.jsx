@@ -12,22 +12,26 @@ export default function ProductInCart({
       <h5>
         BDT: <b>{product.unitPrice}</b>
       </h5>
-      <div className="space-x-2">
-        <label>Qty: </label>
-        <select
-          className="p-1 border-2 rounded-md"
-          id="product_quantity"
-          defaultValue={product.quantityOnCart}
-          onChange={() =>
-            onChangeProductQuantity(event.target.value, product.id)
-          }
+      <div className="flex items-center space-x-2">
+        <label>
+          Qty: <b> {product.quantityOnCart} </b>
+        </label>
+        <button
+          onClick={() => onChangeProductQuantity("+", product.id)}
+          className="border-2 border-gray rounded-md hover:text-white hover:bg-green-600 duration-500"
         >
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
+          <span className="material-symbols-outlined flex items-center">
+            arrow_upward
+          </span>
+        </button>
+        <button
+          onClick={() => onChangeProductQuantity("-", product.id)}
+          className="border-2 border-gray rounded-md hover:text-white hover:bg-red-600 duration-500"
+        >
+          <span className="material-symbols-outlined flex items-center">
+            arrow_downward
+          </span>
+        </button>
         <button
           className="hover:text-white hover:bg-red-600 duration-500 focus:outline-none focus:ring-2 px-4 py-1 border-2 rounded-full text-sm text-red-600"
           onClick={() => onProductDelete(product.id)}
